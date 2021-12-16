@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="Validate functionality" errors="0" tests="8" failures="0" time="1.048" timestamp="2021-11-13T14:59:48">
+  <testcase classname="Validate functionality" name="register new user" time="0.232"></testcase>
+  <testcase classname="Validate functionality" name="login user" time="0.154"></testcase>
+  <testcase classname="Validate functionality" name="should add new article with successive article id, return list of articles with new article" time="0.195"></testcase>
+  <testcase classname="Validate functionality" name="should get article with article id" time="0.102"></testcase>
+  <testcase classname="Validate functionality" name="should get articles" time="0.095"></testcase>
+  <testcase classname="Validate functionality" name="update headline" time="0.093"></testcase>
+  <testcase classname="Validate functionality" name="should get headline for logged in user" time="0.116"></testcase>
+  <testcase classname="Validate functionality" name="logout" time="0.056"></testcase>
+</testsuite>
+</testsuites>

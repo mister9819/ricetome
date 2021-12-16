@@ -1,0 +1,73 @@
+<div *ngIf="display_alert_password || display_alert_age || display_alert_username || display_alert_register" class="alert alert-danger" role="alert">
+  <div *ngIf="display_alert_username">Username should start with an alphabet and rest of the characters can only be alphanumeric!</div>
+  <div *ngIf="display_alert_password">Passwords don't match!</div>
+  <div *ngIf="display_alert_age">Need to be over 18 to register!</div>
+  <div *ngIf="display_alert_register">{{alert_register}}</div>
+</div>
+
+<div class="shadow card mt-4">
+
+  <div class="fs-5 fw-light card-header">
+    Register
+  </div>
+  <div class="card-body">
+
+    <form #register="ngForm" ngNativeValidate class="row" name="register" id="register">
+
+      <div class="mb-3 col-6">
+        <div class="form-floating flex-grow-1">
+          <input ngModel class="form-control" type="text" id="account_name" name="account_name" placeholder="Should start with a alphabet. Rest can be alphanumeric."
+                  required>
+          <label for="account_name">Username: <span style="color: red">*</span></label>
+        </div>
+      </div>
+
+      <div class="col-6 mb-3">
+        <div class="form-floating flex-grow-1">
+          <input ngModel type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
+          <label for="email">Email Address: <span style="color: red">*</span></label>
+        </div>
+      </div>
+
+      <div class="col-6 mb-3">
+        <div class="form-floating flex-grow-1">
+          <input ngModel type="date" class="form-control" id="dob" name="dob" required>
+          <label for="dob">Date of Birth: <span style="color: red">*</span></label>
+        </div>
+      </div>
+
+      <div class="col-6 mb-3">
+        <div class="form-floating flex-grow-1">
+          <input ngModel type="text" class="form-control" id="zipcode" name="zipcode" placeholder="Ex: 12345" required
+                 maxlength="5" pattern="[0-9]{5}">
+          <label for="zipcode">Zipcode: <span style="color: red">*</span></label>
+        </div>
+      </div>
+
+      <div class="col-6 mb-3">
+        <div class="form-floating flex-grow-1">
+          <input ngModel type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+          <label for="password">Password: <span style="color: red">*</span></label>
+        </div>
+      </div>
+
+      <div class="col-6 mb-3">
+        <div class="form-floating flex-grow-1">
+          <input ngModel type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password:" required>
+          <label for="cpassword">Confirm Password: <span style="color: red">*</span></label>
+        </div>
+      </div>
+
+      <input type="hidden" name="timestamp" id="timestamp">
+
+      <div class="col-12 mb-3">
+        <input type="submit" class="btn btn-primary w-100" (click)="submit(register)" value="Register" id="submit">
+      </div>
+      <div class="col-12">
+        <input type="reset" class="btn btn-primary w-100" value="Clear">
+      </div>
+
+    </form>
+  </div>
+</div>
+

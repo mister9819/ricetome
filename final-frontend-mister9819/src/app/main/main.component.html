@@ -1,0 +1,219 @@
+<!-- Modal to create new post -->
+<div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title fs-5" id="exampleModalLabel">New Post</div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form ngNativeValidate (ngSubmit)="addPost()">
+      <div class="modal-body">
+          <div class="form-floating flex-grow-1 mb-3">
+            <input required [(ngModel)]="post_title" [ngModelOptions]="{standalone: true}" type="text" id="post_title2" class="form-control" name="post_title2" placeholder="Title">
+            <label for="post_title2">Title <span style="color: red">*</span></label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <textarea required [(ngModel)]="post_text" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+            <label for="floatingTextarea2">Your Post Here <span style="color: red">*</span></label>
+          </div>
+          <input #imagePost (change)="updateImage($event)" class="form-control form-control-sm mb-3" id="image" accept="image/*" name="image" type="file">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary mb-2" style="width: 48.5%; margin-right: 1%">Post</button>
+        <input value="Clear" type="reset" class="btn btn-primary mb-2" style="width: 48.5%; margin-left: 0">
+        <button type="button" #closePost [hidden]="true" data-bs-dismiss="modal" data-target="#postModal"></button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal to comment -->
+<div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title fs-5" id="exampleModalLabel2">New Comment</div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form ngNativeValidate (ngSubmit)="addComment()">
+        <div class="modal-body">
+          <div class="form-floating flex-grow-1 mb-3">
+            <textarea required [(ngModel)]="post_text" [ngModelOptions]="{standalone: true}" type="text" id="post_text2" class="form-control" name="post_text2" placeholder="Title"></textarea>
+            <label for="post_text2">Comment <span style="color: red">*</span></label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary mb-2" style="width: 48.5%; margin-right: 1%">Post</button>
+          <input value="Clear" type="reset" class="btn btn-primary mb-2" style="width: 48.5%; margin-left: 0">
+          <button type="button" #closeComment [hidden]="true" data-bs-dismiss="modal" data-target="#commentModal"></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal to create edit post -->
+<div class="modal fade" id="editPostModal" tabindex="-1" aria-labelledby="editPostModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title fs-5" id="exampleModalLabel3">Edit Post</div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form ngNativeValidate (ngSubmit)="editPost()">
+        <div class="modal-body">
+          <div class="form-floating flex-grow-1 mb-3">
+            <input disabled required [(ngModel)]="post_title" [ngModelOptions]="{standalone: true}" type="text" id="post_title3" class="form-control" name="post_title3" placeholder="Title">
+            <label for="post_title2">Title <span style="color: red">*</span></label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <textarea required [(ngModel)]="post_text" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="" id="floatingTextarea3" style="height: 100px"></textarea>
+            <label for="floatingTextarea2">Your Post Here <span style="color: red">*</span></label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary mb-2" style="width: 48.5%; margin-right: 1%">Post</button>
+          <input value="Clear" type="reset" class="btn btn-primary mb-2" style="width: 48.5%; margin-left: 0">
+          <button type="button" #closeEditPost [hidden]="true" data-bs-dismiss="modal" data-target="#editPostModal"></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal to edit comment -->
+<div class="modal fade" id="editCommentModal" tabindex="-1" aria-labelledby="commentModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title fs-5" id="exampleModalLabel4">Edit Comment</div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form ngNativeValidate (ngSubmit)="editComment()">
+        <div class="modal-body">
+          <div class="form-floating flex-grow-1 mb-3">
+            <textarea required [(ngModel)]="post_text" [ngModelOptions]="{standalone: true}" type="text" id="post_text4" class="form-control" name="post_text2" placeholder="Title"></textarea>
+            <label for="post_text2">Comment <span style="color: red">*</span></label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary mb-2" style="width: 48.5%; margin-right: 1%">Post</button>
+          <input value="Clear" type="reset" class="btn btn-primary mb-2" style="width: 48.5%; margin-left: 0">
+          <button type="button" #closeEditComment [hidden]="true" data-bs-dismiss="modal" data-target="#editCommentModal"></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-0 pt-3">
+      <div class="shadow card">
+        <div class="card-header">
+          Followed users
+        </div>
+        <ul class="list-group list-group-flush">
+
+          <li class="list-group-item">
+            <form ngNativeValidate (ngSubmit)="addFriend()">
+            <div class="input-group">
+              <div class="form-floating flex-grow-1">
+                <input required [(ngModel)]="addFriendName" type="text" id="search_friend" class="form-control" name="search_friend" placeholder="Add a friend">
+                <label for="search_friend">Follow a user <span style="color: red">*</span></label>
+              </div>
+              <button class="input-group-text btn btn-primary">Go!</button>
+            </div>
+            <div *ngIf="display_alert_no_friend_name || display_alert_same_name" class="mb-0 alert mt-2 alert-danger" role="alert">
+              <div *ngIf="display_alert_no_friend_name">{{alert_no_friend_name}}</div>
+              <div *ngIf="display_alert_same_name">Already following the username.</div>
+            </div>
+            </form>
+          </li>
+          <li *ngFor="let friend of friends" class="list-group-item">
+            <div>
+              <img class="mt-2 user-img" src="{{friend.image}}">
+              <h2 class="mb-0">{{friend.username}}</h2>
+              <p class="mb-0">{{friend.status}}</p>
+              <button (click)="removeFriend(friend)" class="w-100 btn btn-warning">Unfollow</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-8 col-sm-12 ">
+
+      <div class="card mb-3 mt-3 shadow">
+        <div class="input-group">
+          <div class="form-floating flex-grow-1">
+            <input (input)="searchPosts()" [(ngModel)]="searchText" type="text" id="search" class="form-control" name="search" placeholder="Search by text or author:">
+            <label for="search">Search by text or username <span style="color: red">*</span></label>
+          </div>
+          <button (click)="searchPosts()" class="input-group-text btn btn-primary">Search</button>
+        </div>
+      </div>
+
+
+      <div id="feed">
+          <div *ngFor="let post of dposts">
+            <app-posts (titleEvent)="setTitle($event)" (textEvent)="setText($event)" [id]="post.id" [comments]="post.comments" [timestamp]="post.timestamp" [username]="post.username" [title]="post.title" [text]="post.text" [image]="post.image"></app-posts>
+          </div>
+        </div>
+      </div>
+    <div class="col-lg-3 col-md-12 col-sm-0 pt-3">
+      <!-- Button trigger modal -->
+      <div class="card shadow mb-3">
+        <button type="button" style="padding: 0.85rem 0;" class="w-100 btn btn-primary" (click)="resetData()" data-bs-toggle="modal" data-bs-target="#postModal">
+          <span class="fs-5">Create a New Post</span>
+        </button>
+      </div>
+
+      <div class="shadow card mb-3">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+          <div>
+            <img class="mt-0 user-img" src="{{user_image}}">
+            <h2 class="mb-0">{{username}}</h2>
+            <p class="mb-0">{{user_status}}</p>
+
+            <form ngNativeValidate (ngSubmit)="updateStatus()">
+              <div class="input-group mt-2">
+                <div class="form-floating flex-grow-1">
+                  <input required [(ngModel)]="newStatus" type="text" id="update_status" class="form-control" name="update_status" placeholder="Update status">
+                  <label for="update_status">Update headline <span style="color: red">*</span></label>
+                </div>
+                <button class="input-group-text btn btn-primary">Go!</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+<!--      <div class="card">-->
+<!--        <div class="card-header">-->
+<!--          New Post-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--          <form ngNativeValidate (ngSubmit)="addPost()">-->
+<!--            <div class="form-floating flex-grow-1 mb-3">-->
+<!--              <input required [(ngModel)]="post_title" [ngModelOptions]="{standalone: true}" type="text" id="post_title2" class="form-control" name="post_title2" placeholder="Title">-->
+<!--              <label for="post_title2">Title</label>-->
+<!--            </div>-->
+
+<!--            <div class="form-floating mb-3">-->
+<!--              <textarea required [(ngModel)]="post_text" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>-->
+<!--              <label for="floatingTextarea2">Your Post Here</label>-->
+<!--            </div>-->
+<!--            <input class="form-control form-control-sm mb-3" id="file_pic" type="file">-->
+
+<!--            <button class="btn btn-primary mb-2" style="width: 49%; margin-right: 1%">Post</button>-->
+<!--            <input value="Clear" type="reset" class="btn btn-primary mb-2" style="width: 49%; margin-left: 1%">-->
+<!--          </form>-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+  </div>
+</div>

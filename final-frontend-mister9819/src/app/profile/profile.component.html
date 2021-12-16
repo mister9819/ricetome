@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="row mt-lg-5 pt-3">
+    <div class="col-lg-4 col-md-12 mb-3 justify-content-center align-self-center">
+      <div class="card shadow">
+        <div class="fs-5 fw-light card-header">
+          Profile Picture
+        </div>
+        <img class="profile-pic card-img-top" src="{{v_avatar}}" alt="...">
+        <div class="card-body">
+          <div class="d-grid gap-2">
+            <form (ngSubmit)="uploadAvatar()" enctype="multipart/form-data">
+            <input (change)="updateAvatar($event)" class="form-control form-control-sm" id="image" accept="image/*" name="image" type="file">
+            <input type="submit" class="btn btn-primary w-100 mt-2" value="Upload Profile Picture" id="update_pic">
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-3 me-2 ms-2">
+        <div *ngIf="!unlinkable">
+          <button *ngIf="!linked" (click)="link()" style="background-color: #4285f4" class="google-btn w-100">
+            <div class="google-icon-wrapper">
+              <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+            </div>
+            <p class="btn-text"><b>Link account with google</b></p>
+          </button>
+          <button *ngIf="linked" (click)="link()" style="background-color: red" class="google-btn w-100">
+            <div class="google-icon-wrapper">
+              <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+            </div>
+            <p class="btn-text"><b>Unlink account with google</b></p>
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="exists" class="alert alert-danger me-2 ms-2" role="alert">
+        <span *ngIf="exists">The google account is already linked to another account.</span>
+      </div>
+      <div *ngIf="unlinkable" class="alert alert-info me-2 ms-2" role="alert">
+        <span *ngIf="unlinkable">Set up a password to link this google account locally.</span>
+      </div>
+    </div>
+    <div class="col-lg-1 col-md-0"></div>
+    <div class="col-lg-7 col-md-12 mb-3 justify-content-center align-self-center">
+
+      <form ngNativeValidate #profile_form="ngForm" name="profile_form" id="profile_form" (ngSubmit)="myUpdate()">
+
+        <div *ngIf="display_alert_password" class="alert alert-danger" role="alert">
+          Passwords don't match!
+        </div>
+        <div *ngIf="display_update" [innerHTML]="str_update" class="alert alert-success" role="alert"></div>
+        <div class="card shadow">
+          <div class="fs-5 fw-light card-header">
+            Profile
+          </div>
+          <div class="card-body">
+            <div class="input-group mb-3">
+              <div class="form-floating flex-grow-1">
+                <input disabled [(ngModel)]="display_name" type="text" id="display_name" class="form-control" name="display_name" placeholder="Username:">
+                <label for="display_name">Username:</label>
+              </div>
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="form-floating flex-grow-1">
+                <input disabled [(ngModel)]="email" type="email" id="email" class="form-control" name="email" placeholder="Email Address">
+                <label for="email" class="form-label">Email Address:</label>
+              </div>
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="form-floating flex-grow-1">
+                <input disabled [(ngModel)]="dob" type="date" class="form-control" id="dob" name="dob">
+                <label for="dob">Date of birth:</label>
+              </div>
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="form-floating flex-grow-1">
+                <input [(ngModel)]="zipcode" type="text" id="zipcode" class="form-control" name="zipcode" placeholder="Ex: 12345"
+                       maxlength="5" pattern="[0-9]{5}">
+                <label for="zipcode" class="form-label">Zipcode:</label>
+              </div>
+              <span id="v_zipcode" class="input-group-text">{{v_zipcode}}</span>
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="form-floating flex-grow-1">
+                <input [(ngModel)]="password" (input)="updateCPassword()" type="password" id="password" class="form-control" name="password" placeholder="Password">
+                <label for="password" class="form-label">Password:</label>
+              </div>
+              <span *ngIf="!unlinkable" class="input-group-text">****</span>
+            </div>
+
+            <div *ngIf="display_cpassword" class="form-floating mb-3" id="div_cpassword">
+              <input [(ngModel)]="cpassword" type="password" id="cpassword" class="form-control" name="cpassword"
+                     placeholder="Confirm Password:">
+              <label for="cpassword" class="form-label">Confirm Password:</label>
+            </div>
+
+            <div class="d-grid gap-2">
+              <input type="submit" class="btn btn-primary" value="Update" id="update">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

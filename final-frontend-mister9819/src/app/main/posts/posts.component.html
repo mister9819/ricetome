@@ -1,0 +1,47 @@
+<div class="card shadow mb-2 border-primary">
+  <div class="card-header">
+    <span class="fw-bold">{{username}}</span>
+  </div>
+  <div *ngIf="header == 'Image Post'" class="slides">
+    <img class="slide showing" src="{{image}}" alt="First slide">
+  </div>
+
+  <div class="card-body">
+    <h2 class="card-title">{{title}}</h2>
+    <p class="card-text">{{text}}</p>
+
+    <div *ngIf="username == loggedInUser" class="row" style="--bs-gutter-x: 0;">
+        <button class="btn btn-primary mb-2" (click)="setData(id, title, text)" data-bs-toggle="modal" data-bs-target="#editPostModal" style="width: 33%; margin-right: 1%">Edit</button>
+        <button class="btn btn-primary mb-2" style="width: 33%; margin-right: 1%" (click)="setData(id, '', '')" data-bs-toggle="modal" data-bs-target="#commentModal">Comment</button>
+        <button class="btn btn-primary mb-2" (click)="display_comments = !display_comments" style="width: 32%;">
+          <span *ngIf="display_comments">Hide Comments</span>
+          <span *ngIf="!display_comments">Show Comments</span>
+        </button>
+    </div>
+    <div *ngIf="username != loggedInUser" class="row" style="--bs-gutter-x: 0;">
+      <button class="btn btn-primary mb-2" style="width: 49%; margin-right: 1%" (click)="setData(id, '', '')" data-bs-toggle="modal" data-bs-target="#commentModal">Comment</button>
+      <button class="btn btn-primary mb-2" (click)="display_comments = !display_comments" style="width: 50%;">
+        <span *ngIf="display_comments">Hide Comments</span>
+        <span *ngIf="!display_comments">Show Comments</span>
+      </button>
+    </div>
+
+    <div *ngIf="display_comments">
+      <div *ngFor="let comment of comments">
+        <div class="card mb-1">
+          <div class="card-header">
+            {{comment.author}}
+            <span *ngIf="comment.author == loggedInUser">
+              <button class="btn btn-primary mb-2" (click)="setData(id, comment._id, comment.text)" data-bs-toggle="modal" data-bs-target="#editCommentModal" style="width: 20%; position: absolute; right: 0; top: -1px">Edit</button>
+            </span>
+          </div>
+          <div class="card-body">
+            {{comment.text}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="card-text"><small class="text-muted">Created at {{timestamp}}</small></p>
+  </div>
+</div>

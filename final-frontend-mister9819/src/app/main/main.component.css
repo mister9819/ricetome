@@ -1,0 +1,27 @@
+#feed {
+  column-gap: 5px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+#feed>div {
+  /*margin-bottom: 5px;*/
+  /*break-inside: avoid;*/
+  /*display: inline-block;*/
+  width: 100%;
+}
+
+.showing {
+  opacity: 1;
+  z-index: 1;
+}
+
+.user-img {
+  object-fit: cover;
+  width: 100%;
+  height: 175px;
+  border-radius: 15px;
+  margin-bottom: 5px;
+}
+

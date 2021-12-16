@@ -1,0 +1,103 @@
+<!-- Modal to google register -->
+<button type="button" #openRegister style="display: none" data-bs-toggle="modal" data-bs-target="#registerModal"></button>
+
+<div class="modal fade" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" id="registerModal" tabindex="-1" aria-labelledby="registerModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title fs-5" id="exampleModalLabel">{{welcome}}</div>
+      </div>
+      <div *ngIf="gdisplay_alert_age || gdisplay_alert_register" class="alert alert-danger" role="alert">
+        <span *ngIf="gdisplay_alert_age">Need to be over 18 to register!</span>
+        <div *ngIf="gdisplay_alert_register">{{galert_register}}</div>
+      </div>
+
+      <form ngNativeValidate (ngSubmit)="gRegister()">
+        <div class="modal-body">
+          <div class="form-floating flex-grow-1 mb-3">
+            <input required [(ngModel)]="gusername" [ngModelOptions]="{standalone: true}" type="text" id="gusername" class="form-control" name="gusername" placeholder="Title">
+            <label for="gusername">Username <span style="color: red">*</span></label>
+          </div>
+
+          <div class="form-floating flex-grow-1 mb-3">
+            <input disabled required [(ngModel)]="gemail" [ngModelOptions]="{standalone: true}" type="text" id="gemail" class="form-control" name="gemail" placeholder="Title">
+            <label for="gemail">Email <span style="color: red">*</span></label>
+          </div>
+
+          <div class="form-floating flex-grow-1 mb-3">
+            <input required [(ngModel)]="gdob" [ngModelOptions]="{standalone: true}" type="date" id="gdob" class="form-control" name="gdob" placeholder="Title">
+            <label for="gdob">Date of Birth <span style="color: red">*</span></label>
+          </div>
+
+          <div class="form-floating flex-grow-1 mb-3">
+            <input required [(ngModel)]="gzipcode" [ngModelOptions]="{standalone: true}" maxlength="5" pattern="[0-9]{5}" type="text" id="gzipcode" class="form-control" name="gzipcode" placeholder="Title">
+            <label for="gzipcode">Zipcode <span style="color: red">*</span></label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="w-100 btn btn-primary mb-2" style="width: 48.5%; margin-right: 1%">Log in</button>
+          <button (click)="clear()" class="w-100 btn btn-primary mb-2" style="width: 48.5%; margin-right: 1% " data-bs-dismiss="modal" data-target="#registerModal">Cancel</button>
+          <button type="button" #closeRegister [hidden]="true" data-bs-dismiss="modal" data-target="#registerModal"></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row mt-lg-5 pt-3">
+    <div class="col-lg-4 col-md-12 justify-content-center align-self-center">
+
+      <div *ngIf="display_alert_password" class="alert alert-danger" role="alert">
+        <span *ngIf="display_alert_password">Invalid username and password.</span>
+      </div>
+
+      <div class="shadow card mt-4">
+        <div class="fs-5 fw-light card-header">
+          Login
+        </div>
+        <div class="card-body">
+
+          <form #lform="ngForm" ngNativeValidate class="row" name="lform" id="lform">
+
+            <div class="mb-3 col-12">
+              <div class="form-floating flex-grow-1">
+                <input ngModel type="text" class="form-control" id="username" name="username" placeholder="Username:" required>
+                <label for="username">Username: <span style="color: red">*</span></label>
+              </div>
+            </div>
+
+            <div class="col-12 mb-3">
+              <div class="form-floating flex-grow-1">
+                <input ngModel type="password" class="form-control" id="upassword" name="upassword" placeholder="Password" required>
+                <label for="upassword">Password: <span style="color: red">*</span></label>
+              </div>
+            </div>
+
+            <div class="col-12 mb-3">
+              <input type="submit" class="btn btn-primary w-100" (click)="lsubmit(lform.value.username, lform.value.upassword)" value="Login" id="lsubmit">
+            </div>
+            <div class="col-12">
+              <input type="reset" class="btn btn-primary w-100" value="Clear">
+            </div>
+
+          </form>
+        </div>
+    </div>
+
+      <div class="card mt-3 me-2 ms-2 shadow">
+        <div (click)="glogin()" class="google-btn">
+          <div class="google-icon-wrapper">
+            <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+          </div>
+          <p class="btn-text"><b>Login with google</b></p>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-7 col-md-12 justify-content-center align-self-center">
+      <app-registeration></app-registeration>
+    </div>
+  </div>
+</div>
