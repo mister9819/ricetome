@@ -3,9 +3,9 @@ const stream = require('stream')
 const cloudinary = require('cloudinary')
 
 cloudinary.config({
-    cloud_name: 'hz9artqut',
-    api_key: '332979764613834',
-    api_secret: 'cp9hyjnXBUMLGEPsr2MVTbUFEfw',
+    cloud_name: 'revoked',
+    api_key: 'revoked',
+    api_secret: 'revoked',
     secure: true
 });
 
