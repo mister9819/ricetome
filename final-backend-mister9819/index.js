@@ -8,7 +8,7 @@ const corsOption = {origin: ['http://localhost:4200', 'https://ricetome.surge.sh
 
 // Connect to mongodb
 const mongoose = require('mongoose');
-const connectionString = 'mongodb+srv://sp91:sp91DB@cluster0.ndppc.mongodb.net/finalDatabase?retryWrites=true&w=majority';
+const connectionString = 'revoked';
 
 const auth = require('./src/auth');
 const article = require('./src/articles');
