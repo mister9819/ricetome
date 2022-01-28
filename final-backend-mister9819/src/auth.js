@@ -4,7 +4,7 @@ const saltRounds = 10;
 const Profile = require("./schema/profileSchema");
 const User = require("./schema/userSchema")
 
-REDIS_URL = "redis://:p0fb6912a207506a41460e3726393aed5dbaa7cdf7aeca428d686f0742bb44455@ec2-52-0-105-255.compute-1.amazonaws.com:21149"
+REDIS_URL = "REDACTED"
 const redis = require('redis').createClient(REDIS_URL);
 
 let cookieKey = "sid";
